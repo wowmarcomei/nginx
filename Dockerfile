@@ -7,8 +7,8 @@ RUN apt-get update && \
 # 创建logrotate配置文件
 COPY logrotate.conf /etc/logrotate.d/nginx
 
-# 添加cron任务以定期运行logrotate
-RUN echo "*/1 * * * * root logrotate /etc/logrotate.d/nginx" > /etc/cron.d/logrotate
+# 创建 cron 任务，每天凌晨 0 点以root身份执行任务
+RUN echo "0 0 * * * root logrotate /etc/logrotate.d/nginx" > /etc/cron.d/logrotate
 
 # 暴露端口
 EXPOSE 80 443
