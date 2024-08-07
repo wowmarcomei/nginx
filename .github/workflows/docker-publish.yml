@@ -3,7 +3,7 @@ name: Deploy Images to GitHub Container Registry
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
 
 jobs:
