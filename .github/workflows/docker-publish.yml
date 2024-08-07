@@ -27,6 +27,10 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Check GITHUB_TOKEN permissions
+      run: |
+        curl -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/user/permissions
         
     - name: Build and push
       uses: docker/build-push-action@v3
